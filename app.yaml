@@ -1,7 +1,7 @@
 runtime: python39
 
 env_variables:
-  CLOUD_SQL_USERNAME: "root"
+  CLOUD_SQL_USERNAME: "postgres"
   CLOUD_SQL_PASSWORD: "Vsoccer14"
   CLOUD_SQL_DATABASE_NAME: "testing_123"
-  CLOUD_SQL_CONNECTION_NAME: "thermal-apricot-305315:us-east4:second-test-sql"
+  CLOUD_SQL_CONNECTION_NAME: "thermal-apricot-305315:us-east4:fourth-test-sql"
