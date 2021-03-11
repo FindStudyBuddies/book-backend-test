@@ -1,5 +1,5 @@
 import flask
-from db import get_books, add_books
+from db import get_books, add_book, add_author, get_books_of_author
 
 app = flask.Flask(__name__)
 
@@ -30,9 +30,14 @@ def api_add():
     if not flask.request.is_json:
         return flask.jsonify({"msg": "Missing JSON in request"}), 400  
     
-    add_books(flask.request.get_json())
-    return 'Book Added'
+    return add_book(flask.request.get_json())
     
+@app.route("/api/v1/people/authors/add", methods=['POST'])
+def api_add_author():
+    if not flask.request.is_json:
+        return flask.jsonify({"msg": "Missing JSON in request"}), 400  
+    
+    return add_author(flask.request.get_json())
 
 @app.route("/api/v1/resources/books/all", methods=['GET'])
 def api_all():
@@ -60,6 +65,11 @@ def api_id():
     # Use the jsonify function from Flask to convert our list of
     # Python dictionaries to the JSON format.
     return flask.jsonify(results)
+
+
+@app.route('/api/v1/resources/author_books', methods=['GET'])
+def api_books_from_author():
+    return get_books_of_author(flask.request.get_json()) 
 
 
 
