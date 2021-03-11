@@ -9,7 +9,7 @@ This project is the flask server which interacts with a PostgreSQL database host
 _PostgreSQL > MySQL_ because more active development, better community  
 _GCP > AWS_ because GCP has a nicer UI and is easier to use  
 _SQLAlchemy_ has a rich ORM methodology which will make development easier in the long run  
-_UUIDs_ used over an incrementing counter for more security
+_UUIDs_ used over an incrementing counter for primary keys for more security
 
 ## Endpoints
 **Base url**:   
