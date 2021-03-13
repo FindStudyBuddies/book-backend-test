@@ -3,8 +3,9 @@ from db import get_books, add_book, add_author, get_books_of_author
 
 app = flask.Flask(__name__)
 
+# sample data for my own reference
 books = [
-    {'id': 0,
+    {'id': 0, # changed to UUID for security reasons
      'title': 'A Fire Upon the Deep',
      'author': 'Vernor Vinge',
      'first_sentence': 'The coldsleep itself was dreamless.',

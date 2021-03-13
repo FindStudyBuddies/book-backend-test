@@ -7,6 +7,7 @@ from dao_author import Author
 from dao_book import Book
 from base import Base
 
+
 db_socket_dir = os.environ.get("DB_SOCKET_DIR", "/cloudsql")
 #cloud_sql_connection_name = os.environ["CLOUD_SQL_CONNECTION_NAME"]
 db_user = os.environ.get('CLOUD_SQL_USERNAME')
@@ -27,15 +28,14 @@ def open_connection():
         #            db_connection_name)  # i.e "<PROJECT-NAME>:<INSTANCE-REGION>:<INSTANCE-NAME>"
         #    }
         #)
-    url = "postgresql+pg8000://" + db_user + ":" + db_pass + "@35.230.182.58/" + db_name + "?unix_sock=" + db_socket_dir + "/" + db_connection_name+ "/.s.PGSQL.5432"
-    urlMySQL = "mysql://" + db_user + ":" + db_pass + "@35.245.6.29/" + db_name + "?unix_sock=" + db_socket_dir + "/" + db_connection_name
+    #url = "postgresql+pg8000://" + db_user + ":" + db_pass + "@35.230.182.58/" + db_name + "?unix_sock=" + db_socket_dir + "/" + db_connection_name+ "/.s.PGSQL.5432"
+    #urlMySQL = "mysql://" + db_user + ":" + db_pass + "@35.245.6.29/" + db_name + "?unix_sock=" + db_socket_dir + "/" + db_connection_name
     localUrl = "postgresql+pg8000://" + db_user + ":" + "@127.0.0.1:5432/" + db_name
-    print(url)
     #engine = sqlalchemy.create_engine(url)
-    engine = sqlalchemy.create_engine(localUrl)
+    engine = sqlalchemy.create_engine(localUrl, echo=True)
     engine.dialect.description_encoding = None
     Session = sessionmaker(bind=engine)
-    Base.metadata.create_all(engine)
+    #Base.metadata.create_all(engine)
     print(db_user)
     print(db_pass)
     print(db_name)
